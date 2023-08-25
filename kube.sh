@@ -8,6 +8,9 @@ echo "----------------------------------------------------------------"
 echo "----------------[ Starting Minikube and Testing Installation ]-----------------"
 sudo usermod -aG docker $USER && newgrp docker
 
+# với trường hợp user root
+# minikube start --driver=docker --force 
+
 minikube start
 
 minikube status
