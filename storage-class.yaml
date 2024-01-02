@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false" # nếu set là true trên 1 hay vài storage class thì k8s sẽ mặc định lấy default class mới tạo gần nhất
+provisioner: kubernetes.io/no-provisioner # csi-driver.example-vendor.example - giải pháp 3rd party ko thì mặc định k8s
+reclaimPolicy: Retain # default value is Delete
+allowVolumeExpansion: true
+mountOptions:
+  - discard # 
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  guaranteedReadWriteLatency: "true" # provider-specific

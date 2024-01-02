@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-huynn
+spec:
+  accessModes:
+    - ReadWriteOnce # ReadWriteMany giá trị này phải khớp vs PV 
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: local-storage # storage class phải khớp với pv thì pvc mới bound đc vào pv
+  selector:
+    matchLabels:
+      release: "stable"
+    matchExpressions:
+      - {key: environment, operator: In, values: [dev]}
