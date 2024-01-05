@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mypod
+  name: nginx
 spec:
   containers:
-    - name: myfrontend
+    - name: nginx-service
       image: nginx
       volumeMounts:
       - mountPath: "/var/www/html"

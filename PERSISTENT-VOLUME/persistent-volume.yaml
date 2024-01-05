@@ -3,6 +3,9 @@ kind: PersistentVolume
 metadata:
   name: pv-huynn
 spec:
+  claimRef:
+      name: pvc-huynn
+      namespace: pv-pvc-huynn
   capacity:
     storage: 10Gi
   volumeMode: Filesystem
@@ -14,5 +17,5 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /share-folder
-    server: 10.0.0.3 # NAS công ty 
+    path: ./persistent-volume-01
+    server: 192.168.1.96
